@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}
+{% endblock %}
+{% block javascript %}
+    <script src="{% static 'js/course.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+
+
+    <main class="main-wrapper">
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>configuration |
+                        <small>Home</small>
+                    </h4>
+                    <p>
+                        <button type="button" class="btn btn-primary btn-sm js-create-course pull-right">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            New Course
+                        </button>
+                    </p>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="{% url 'configuration:configuration' %}">configuration</a></li>
+                        <li><a href="{% url 'course:course' %}">courses</a></li>
+                        <li class="active">Manage Courses</li>
+                    </ol>
+                </div>
+            </div>
+
+            {#                {% if messages %}#}
+            {#                    <div class="row">#}
+            {#                        <div class="col-md-12">#}
+            {#                            <div class="alert alert-warning alert-dismissable">#}
+            {#                                <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>#}
+            {#                                {% for message in messages %}#}
+            {#                                    <p{% if message.tags %}#}
+            {#                                        class="{{ message.tags }}"{% endif %}>#}
+            {#                                        {{ message }}</p>#}
+            {#                                {% endfor %}#}
+            {#                            </div>#}
+            {##}
+            {#                        </div>#}
+            {#                    </div>#}
+            {##}
+            {##}
+            {#                {% endif %}#}
+
+            <div class="row">
+                <div class="col-md-12">
+                    <table id="course-table" class="table table-hover table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th style="width:5%;">S.N.</th>
+                            <th>Course</th>
+                            <th>Code</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% include 'course/includes/partial_course_list.html' %}
+
+                        </tbody>
+                    </table>
+
+
+                    <div class="modal fade" id="modal-course">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </main>
+
+{% endblock %}
